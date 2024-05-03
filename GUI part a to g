@@ -1,0 +1,234 @@
+import tkinter as tk
+from tkinter import ttk, messagebox
+
+class EventManagementApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Event Management System")
+
+        # Create notebook (tabbed interface)
+        self.notebook = ttk.Notebook(root)
+        self.notebook.pack(fill=tk.BOTH, expand=True)
+
+        # Part a: Add/Delete/Modify/Display details of employees, events, clients, guests and suppliers.
+        self.create_employee_tab()
+
+    # Part a: Add/Delete/Modify/Display details of employees, events, clients, guests and suppliers.
+    def create_employee_tab(self):
+        self.employee_tab = tk.Frame(self.notebook)
+        self.notebook.add(self.employee_tab, text="Employees")
+
+        # Add entry field for entering employee ID
+        self.employee_id_label = tk.Label(self.employee_tab, text="Enter Employee ID:")
+        self.employee_id_label.pack(pady=5)
+
+        self.employee_id_entry = tk.Entry(self.employee_tab, width=20)
+        self.employee_id_entry.pack(pady=5)
+
+        # Button to display employee details
+        self.display_employee_button = tk.Button(self.employee_tab, text="Display Employee Details", command=self.display_employee_by_id)
+        self.display_employee_button.pack(pady=5)
+
+    # Part b: Display all the details of an employee, given the ID number.
+    def display_employee_by_id(self):
+        employee_id = self.employee_id_entry.get()
+
+        # Placeholder function to fetch employee details from the system based on ID
+        employee_details = self.fetch_employee_details(employee_id)
+
+        if employee_details:
+            messagebox.showinfo("Employee Details", f"Employee ID: {employee_details['id']}\nName: {employee_details['name']}\nDepartment: {employee_details['department']}\nJob Title: {employee_details['job_title']}\nSalary: {employee_details['salary']}")
+        else:
+            messagebox.showerror("Error", "Employee not found!")
+
+    # Placeholder function to fetch employee details (replace with actual implementation)
+    def fetch_employee_details(self, employee_id):
+        # Dummy implementation - replace with actual database query or data retrieval
+        employees = {
+            "47899": {"id": "47899", "name": "Susan Meyers", "department": "Sales", "job_title": "Manager", "salary": "37500"},
+            "11234": {"id": "11234", "name": "Shyam Sundar", "department": "Sales", "job_title": "Sales person", "salary": "20000"},
+            # Add more employee details here
+        }
+
+        return employees.get(employee_id)
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = EventManagementApp(root)
+    root.mainloop()
+
+   def create_event_tab(self):
+        # Part c: Create a tab for managing events
+        self.event_tab = tk.Frame(self.notebook)
+        self.notebook.add(self.event_tab, text="Events")
+
+        # Add entry field for entering event ID
+        self.event_id_label = tk.Label(self.event_tab, text="Enter Event ID:")
+        self.event_id_label.pack(pady=5)
+
+        self.event_id_entry = tk.Entry(self.event_tab, width=20)
+        self.event_id_entry.pack(pady=5)
+
+        # Button to display event details
+        self.display_event_button = tk.Button(self.event_tab, text="Display Event Details", command=self.display_event_by_id)
+        self.display_event_button.pack(pady=5)
+
+    def create_client_tab(self):
+        # Part d: Create a tab for managing clients
+        self.client_tab = tk.Frame(self.notebook)
+        self.notebook.add(self.client_tab, text="Clients")
+
+        # Add entry field for entering client ID
+        self.client_id_label = tk.Label(self.client_tab, text="Enter Client ID:")
+        self.client_id_label.pack(pady=5)
+
+        self.client_id_entry = tk.Entry(self.client_tab, width=20)
+        self.client_id_entry.pack(pady=5)
+
+        # Button to display client details
+        self.display_client_button = tk.Button(self.client_tab, text="Display Client Details", command=self.display_client_by_id)
+        self.display_client_button.pack(pady=5)
+
+    def create_supplier_tab(self):
+        # Part e: Create a tab for managing suppliers
+        self.supplier_tab = tk.Frame(self.notebook)
+        self.notebook.add(self.supplier_tab, text="Suppliers")
+
+        # Add entry field for entering supplier ID
+        self.supplier_id_label = tk.Label(self.supplier_tab, text="Enter Supplier ID:")
+        self.supplier_id_label.pack(pady=5)
+
+        self.supplier_id_entry = tk.Entry(self.supplier_tab, width=20)
+        self.supplier_id_entry.pack(pady=5)
+
+        # Button to display supplier details
+        self.display_supplier_button = tk.Button(self.supplier_tab, text="Display Supplier Details", command=self.display_supplier_by_id)
+        self.display_supplier_button.pack(pady=5)
+
+    def create_guest_tab(self):
+        # Part f: Create a tab for managing guests
+        self.guest_tab = tk.Frame(self.notebook)
+        self.notebook.add(self.guest_tab, text="Guests")
+
+        # Add entry field for entering guest ID
+        self.guest_id_label = tk.Label(self.guest_tab, text="Enter Guest ID:")
+        self.guest_id_label.pack(pady=5)
+
+        self.guest_id_entry = tk.Entry(self.guest_tab, width=20)
+        self.guest_id_entry.pack(pady=5)
+
+        # Button to display guest details
+        self.display_guest_button = tk.Button(self.guest_tab, text="Display Guest Details", command=self.display_guest_by_id)
+        self.display_guest_button.pack(pady=5)
+
+    def create_venue_tab(self):
+        # Part g: Create a tab for managing venues
+        self.venue_tab = tk.Frame(self.notebook)
+        self.notebook.add(self.venue_tab, text="Venues")
+
+        # Add entry field for entering venue ID
+        self.venue_id_label = tk.Label(self.venue_tab, text="Enter Venue ID:")
+        self.venue_id_label.pack(pady=5)
+
+        self.venue_id_entry = tk.Entry(self.venue_tab, width=20)
+        self.venue_id_entry.pack(pady=5)
+
+        # Button to display venue details
+        self.display_venue_button = tk.Button(self.venue_tab, text="Display Venue Details", command=self.display_venue_by_id)
+        self.display_venue_button.pack(pady=5)
+
+    # Part c: Display all the details of an event, given the ID number.
+    def display_event_by_id(self):
+        event_id = self.event_id_entry.get()
+        # Placeholder function to fetch event details from the system based on ID
+        event_details = self.fetch_event_details(event_id)
+        if event_details:
+            messagebox.showinfo("Event Details", f"Event ID: {event_details['id']}\nType: {event_details['type']}\nTheme: {event_details['theme']}\nDate: {event_details['date']}\nTime: {event_details['time']}\nVenue: {event_details['venue']}")
+        else:
+            messagebox.showerror("Error", "Event not found!")
+
+    # Part d: Display all the details of a client, given the ID number.
+    def display_client_by_id(self):
+        client_id = self.client_id_entry.get()
+        # Placeholder function to fetch client details from the system based on ID
+        client_details = self.fetch_client_details(client_id)
+        if client_details:
+            messagebox.showinfo("Client Details", f"Client ID: {client_details['id']}\nName: {client_details['name']}\nAddress: {client_details['address']}\nContact: {client_details['contact']}\nBudget: {client_details['budget']}")
+        else:
+            messagebox.showerror("Error", "Client not found!")
+
+    # Part e: Display all the details of a supplier, given the ID number.
+    def display_supplier_by_id(self):
+        supplier_id = self.supplier_id_entry.get()
+        # Placeholder function to fetch supplier details from the system based on ID
+        supplier_details = self.fetch_supplier_details(supplier_id)
+        if supplier_details:
+            messagebox.showinfo("Supplier Details", f"Supplier ID: {supplier_details['id']}\nName: {supplier_details['name']}\nAddress: {supplier_details['address']}\nContact: {supplier_details['contact']}")
+        else:
+            messagebox.showerror("Error", "Supplier not found!")
+
+    # Part f: Display all the details of a guest, given the ID number.
+    def display_guest_by_id(self):
+        guest_id = self.guest_id_entry.get()
+        # Placeholder function to fetch guest details from the system based on ID
+        guest_details = self.fetch_guest_details(guest_id)
+        if guest_details:
+            messagebox.showinfo("Guest Details", f"Guest ID: {guest_details['id']}\nName: {guest_details['name']}\nAddress: {guest_details['address']}\nContact: {guest_details['contact']}")
+        else:
+            messagebox.showerror("Error", "Guest not found!")
+
+    # Part g: Display all the details of a venue, given the ID number.
+    def display_venue_by_id(self):
+        venue_id = self.venue_id_entry.get()
+        # Placeholder function to fetch venue details from the system based on ID
+        venue_details = self.fetch_venue_details(venue_id)
+        if venue_details:
+            messagebox.showinfo("Venue Details", f"Venue ID: {venue_details['id']}\nName: {venue_details['name']}\nAddress: {venue_details['address']}\nContact: {venue_details['contact']}\nMinimum Guests: {venue_details['min_guests']}\nMaximum Guests: {venue_details['max_guests']}")
+        else:
+            messagebox.showerror("Error", "Venue not found!")
+
+    # Placeholder functions for fetching details (replace with actual implementation)
+    def fetch_event_details(self, event_id):
+        # Dummy implementation - replace with actual database query or data retrieval
+        events = {
+            "1": {"id": "1", "type": "Wedding", "theme": "Romantic", "date": "2024-06-15", "time": "17:00", "venue": "Garden Hall"},
+            "2": {"id": "2", "type": "Birthday", "theme": "Superhero", "date": "2024-07-20", "time": "14:00", "venue": "Adventure Park"},
+            # Add more event details here
+        }
+        return events.get(event_id)
+
+    def fetch_client_details(self, client_id):
+        # Dummy implementation - replace with actual database query or data retrieval
+        clients = {
+            "1": {"id": "1", "name": "John Doe", "address": "123 Main St", "contact": "555-1234", "budget": "$5000"},
+            "2": {"id": "2", "name": "Jane Smith", "address": "456 Elm St", "contact": "555-5678", "budget": "$8000"},
+            # Add more client details here
+        }
+        return clients.get(client_id)
+
+    def fetch_supplier_details(self, supplier_id):
+        # Dummy implementation - replace with actual database query or data retrieval
+        suppliers = {
+            "1": {"id": "1", "name": "Catering Delight", "address": "789 Oak St", "contact": "555-9012"},
+            "2": {"id": "2", "name": "Decor Masters", "address": "101 Pine St", "contact": "555-3456"},
+            # Add more supplier details here
+        }
+        return suppliers.get(supplier_id)
+
+    def fetch_guest_details(self, guest_id):
+        # Dummy implementation - replace with actual database query or data retrieval
+        guests = {
+            "1": {"id": "1", "name": "Alice Johnson", "address": "321 Maple Ave", "contact": "555-6789"},
+            "2": {"id": "2", "name": "Bob Brown", "address": "654 Birch Ln", "contact": "555-4321"},
+            # Add more guest details here
+        }
+        return guests.get(guest_id)
+
+    def fetch_venue_details(self, venue_id):
+        # Dummy implementation - replace with actual database query or data retrieval
+        venues = {
+            "1": {"id": "1", "name": "Garden Hall", "address": "123 Park St", "contact": "555-1111", "min_guests": "50", "max_guests": "200"},
+            "2": {"id": "2", "name": "Adventure Park", "address": "456 Forest Rd", "contact": "555-2222", "min_guests": "20", "max_guests": "100"},
+            # Add more venue details here
+        }
+        return venues.get(venue_id)
