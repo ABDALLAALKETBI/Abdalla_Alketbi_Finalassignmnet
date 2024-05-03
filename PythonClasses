@@ -1,0 +1,79 @@
+from datetime import date, time
+
+class Employee:
+    def __init__(self, name, employeeID, department, jobTitle, basicSalary, age, dateOfBirth, passportDetails):
+        self.name = name
+        self.employeeID = employeeID
+        self.department = department
+        self.jobTitle = jobTitle
+        self.basicSalary = basicSalary
+        self.age = age
+        self.dateOfBirth = dateOfBirth
+        self.passportDetails = passportDetails
+
+    def manage(self, employee):
+        # Method to manage another employee
+        pass
+
+class Event:
+    def __init__(self, eventID, type, theme, date, time, duration, venueAddress, clientID, cateringCompany, cleaningCompany, decorationsCompany, entertainmentCompany, furnitureSupplyCompany, invoice):
+        self.eventID = eventID
+        self.type = type
+        self.theme = theme
+        self.date = date
+        self.time = time
+        self.duration = duration
+        self.venueAddress = venueAddress
+        self.clientID = clientID
+        self.guestList = []
+        self.cateringCompany = cateringCompany
+        self.cleaningCompany = cleaningCompany
+        self.decorationsCompany = decorationsCompany
+        self.entertainmentCompany = entertainmentCompany
+        self.furnitureSupplyCompany = furnitureSupplyCompany
+        self.invoice = invoice
+
+class Client:
+    def __init__(self, clientID, name, address, contactDetails, budget):
+        self.clientID = clientID
+        self.name = name
+        self.address = address
+        self.contactDetails = contactDetails
+        self.budget = budget
+
+class Guest:
+    def __init__(self, guestID, name, address, contactDetails):
+        self.guestID = guestID
+        self.name = name
+        self.address = address
+        self.contactDetails = contactDetails
+
+class Supplier:
+    def __init__(self, supplierID, name, address, contactDetails, menu=None, minGuests=None, maxGuests=None):
+        self.supplierID = supplierID
+        self.name = name
+        self.address = address
+        self.contactDetails = contactDetails
+        self.menu = menu
+        self.minGuests = minGuests
+        self.maxGuests = maxGuests
+
+# Create instances of Employee, Event, Client, Guest, and Supplier classes
+employee1 = Employee("Abdalla Alketbi", "202211310", "Sales", "Manager", 50000, 35, date(2003, 7, 3), "ABC123")
+event1 = Event("EVT001", "Wedding", "Elegant", date(2024, 5, 15), time(18, 0), 4.5, "123 St", "C001", "Catering Co.", "Cleaning Co.", "Decorations Co.", "Entertainment Co.", "Furniture Co.", 5000.0)
+client1 = Client("C001", "ABC Corp", "456  St", "123-456-7890", 10000)
+guest1 = Guest("G001", "Cristiano Ronaldo", "789  St", "456-789-0123")
+supplier1 = Supplier("S001", "Food Co.", "100  St", "789-012-3456", "Menu Items", 50, 200)
+
+# Print attributes of the created instances
+print("Employee:")
+print(employee1.__dict__)
+print("\nEvent:")
+print(event1.__dict__)
+print("\nClient:")
+print(client1.__dict__)
+print("\nGuest:")
+print(guest1.__dict__)
+print("\nSupplier:")
+print(supplier1.__dict__)
+
