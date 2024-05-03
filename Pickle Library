@@ -1,0 +1,22 @@
+import pickle
+
+def save_employee_data(employees):
+    try:
+        with open('employee_data.pkl', 'wb') as file:
+            pickle.dump(employees, file)
+        print("Employee data saved successfully.")
+    except Exception as e:
+        print(f"Error occurred while saving employee data: {e}")
+
+def load_employee_data():
+    try:
+        with open('employee_data.pkl', 'rb') as file:
+            employees = pickle.load(file)
+        print("Employee data loaded successfully.")
+        return employees
+    except FileNotFoundError:
+        print("Employee data file not found.")
+        return {}
+    except Exception as e:
+        print(f"Error occurred while loading employee data: {e}")
+        return {}
